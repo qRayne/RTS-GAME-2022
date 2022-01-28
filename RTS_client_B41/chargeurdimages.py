@@ -6,7 +6,7 @@
 from tkinter import PhotoImage
 # toutes les images devraient �tre ins�r�es ici
 
-import os,os.path
+import os, os.path
 
 
 def chargerimages2():
@@ -177,21 +177,24 @@ def chargerimages2():
         'V_soldatG': PhotoImage(file='images/vert/V_soldatG.png')}
     return images
 
-images={}
+
+images = {}
+
 
 def chargerimages(chemin=None):
-    if chemin==None:
-        chemin=os.getcwd()
-        chemin=chemin+"\\images"
+    if chemin == None:
+        chemin = os.getcwd()
+        chemin = chemin + "\\images"
     for i in os.listdir(chemin):
-        che=chemin+"\\"+i
+        che = chemin + "\\" + i
         if os.path.isdir(che):
             chargerimages(che)
         else:
-            nom, ext=os.path.splitext(os.path.basename(i))
-            if ".png"==ext:
-                    images[nom]=PhotoImage(file=che) #.replace("\\","/")
+            nom, ext = os.path.splitext(os.path.basename(i))
+            if ".png" == ext:
+                images[nom] = PhotoImage(file=che)  # .replace("\\","/")
     return images
+
 
 def chargergifs():
     gifs = {}
@@ -212,7 +215,7 @@ def chargergifs():
 
 
 if __name__ == '__main__':
-    images=chargerimages()
+    images = chargerimages()
 
     for i in images.keys():
-            print(i,images[i])
+        print(i, images[i])
